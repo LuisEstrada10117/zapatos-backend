@@ -8,8 +8,6 @@ group = 'Sis414.Sistemas'
 version = '0.0.1-SNAPSHOT'
 description = 'Sis 414 G2 2025'
 
-
-
 repositories {
     mavenCentral()
 }
@@ -31,4 +29,13 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+// Configuración para generar solo el JAR ejecutable
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = false
 }
