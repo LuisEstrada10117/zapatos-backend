@@ -15,7 +15,9 @@ FROM eclipse-temurin:17-jre
 EXPOSE $PORT
 
 # Copia el JAR construido con el nombre exacto
-COPY --from=build /home/gradle/src/build/libs/demo-0.0.1-SNAPSHOT.jar /app/app.jar
+# Copia cualquier JAR de build/libs
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/app.jar
+
 
 # Comando para ejecutar la app
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
