@@ -41,7 +41,7 @@ tasks.named('test') {
 // Configuración para generar solo el JAR ejecutable
 bootJar {
     enabled = true
-    archiveFileName = 'demo-0.0.1-SNAPSHOT' // Nombre fijo del JAR para deploy
+    archiveFileName = 'demo-0.0.1-SNAPSHOT.jar' // Nombre fijo del JAR para deploy
 }
 
 jar {
