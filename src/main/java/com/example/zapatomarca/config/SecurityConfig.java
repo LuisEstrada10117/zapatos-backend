@@ -22,9 +22,7 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/marcas/**").permitAll()
-                .requestMatchers("/zapatos/**").permitAll()
-                .anyRequest().authenticated() // mantiene autenticación para otras rutas
+                .anyRequest().permitAll() // Permite todas las rutas
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
@@ -34,10 +32,10 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        // Reemplaza "AQUI_PON_TU_DOMINIO" por tu URL de frontend, ej: https://mi-frontend.vercel.app
+        // Permitir desarrollo local y tu dominio en Railway
         configuration.setAllowedOrigins(Arrays.asList(
-            "http://localhost:4200",      // para desarrollo local
-            "courageous-balance-production-3f7b.up.railway.app"        // tu dominio en Railway, ngrok o hosting real
+            "http://localhost:4200",
+            "https://courageous-balance-production-3f7b.up.railway.app"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
